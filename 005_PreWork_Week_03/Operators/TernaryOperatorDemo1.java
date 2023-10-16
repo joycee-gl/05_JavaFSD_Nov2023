@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class TernaryOperatorDemo1 {
 
 	public static void main(String[] args) {
