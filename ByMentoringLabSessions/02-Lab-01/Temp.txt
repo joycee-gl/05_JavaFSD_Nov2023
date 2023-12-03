@@ -291,3 +291,15 @@ public class CredentialServiceImpl implements ICredentialService{
 }
 
 ------------------------
+
+
+public String generatePassword() {
+
+	PasswordGenerator passwordGenerator = new PasswordGenerator();		
+	String password = passwordGenerator.generate();		
+	return password;
+}
+
+---------------------------
+
+
