@@ -358,3 +358,13 @@ static void testEmailAddressGeneration01() {
 }
 
 ---------------------------------
+
+public static void main(String[] args) {
+	
+	// testPasswordGeneration();
+	
+	testEmailAddressGeneration();
+}
+
+----------------
+
