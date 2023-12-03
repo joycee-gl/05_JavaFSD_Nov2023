@@ -267,3 +267,27 @@ public interface ICredentialService {
 }
 
 ------------------------------------
+
+package com.greatlearning.javafsd.emailapp.service;
+
+import com.greatlearning.javafsd.emailapp.model.Employee;
+
+public class CredentialServiceImpl implements ICredentialService{
+
+    public String generatePassword() {
+
+        return null;
+    }
+
+    public String generateEmailAddress(String firstName, String lastName, int departmentCode) {
+        
+        return null;
+    }
+
+    public void displayCredentials(Employee employee) {
+                
+    }
+
+}
+
+------------------------
