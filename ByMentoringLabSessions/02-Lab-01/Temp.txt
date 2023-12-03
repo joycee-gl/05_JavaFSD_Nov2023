@@ -293,6 +293,34 @@ public class CredentialServiceImpl implements ICredentialService{
 ------------------------
 
 
+public void displayCredentials(Employee employee) {
+
+	StringBuilder messageBuilder = new StringBuilder();
+	messageBuilder.append("Dear ");
+	messageBuilder.append(employee.getFirstName());
+	messageBuilder.append(", your generated credentials are as follows");
+	
+	// \r\n \n
+	String newline = System.getProperty("line.separator");
+	messageBuilder.append(newline);
+	messageBuilder.append("Email : ");
+	messageBuilder.append(employee.getEmailAddress());
+	
+	messageBuilder.append(newline);
+	messageBuilder.append("Password :");
+	messageBuilder.append(employee.getPassword());
+	
+	String finalMessage = messageBuilder.toString();
+	
+	System.out.println(finalMessage);		
+}
+
+-------------------------
+
+
+
+
+
 public String generatePassword() {
 
 	PasswordGenerator passwordGenerator = new PasswordGenerator();		
@@ -367,4 +395,71 @@ public static void main(String[] args) {
 }
 
 ----------------
+
+
+public void displayCredentials(Employee employee) {
+
+	StringBuilder messageBuilder = new StringBuilder();
+	messageBuilder.append("Dear ");
+	messageBuilder.append(employee.getFirstName());
+	messageBuilder.append(", your generated credentials are as follows");
+	
+	// \r\n \n
+	String newline = System.getProperty("line.separator");
+	messageBuilder.append(newline);
+	messageBuilder.append("Email : ");
+	messageBuilder.append(employee.getEmailAddress());
+	
+	messageBuilder.append(newline);
+	messageBuilder.append("Password :");
+	messageBuilder.append(employee.getPassword());
+	
+	String finalMessage = messageBuilder.toString();
+	
+	System.out.println(finalMessage);		
+}
+
+------------------------------
+
+...
+
+import com.greatlearning.javafsd.emailapp.model.Employee;
+
+...
+
+static void testDisplayCredentials() {
+	
+	testDisplayCredentials01();
+	
+}
+
+static void testDisplayCredentials01() {
+	
+	ICredentialService credentialService 
+		= new CredentialServiceImpl();		
+
+	String firstName = "Raghu";
+	String lastName =  "Kishore";
+	int departmentCode = 3;
+	
+	Employee raghu = new Employee(firstName, lastName);
+
+	
+	String emailAddress = credentialService.generateEmailAddress(
+		firstName, lastName, departmentCode);		
+	
+	// For Email Address
+	raghu.setEmailAddress(emailAddress);
+
+
+	// For Password
+	
+	String password = credentialService.generatePassword();				
+	raghu.setPassword(password);
+	
+	credentialService.displayCredentials(raghu);		
+}
+
+
+---------------------
 
