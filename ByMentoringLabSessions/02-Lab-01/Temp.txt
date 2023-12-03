@@ -302,4 +302,31 @@ public String generatePassword() {
 
 ---------------------------
 
+package com.greatlearning.javafsd.emailapp.service;
+
+public class CredentialServiceImplTest {
+
+    
+    public static void main(String[] args) {
+        
+        testPasswordGeneration();
+    }
+    
+    static void testPasswordGeneration() {
+    
+        
+        testPasswordGeneration01();
+    }
+    
+    static void testPasswordGeneration01() {
+        
+        
+        ICredentialService credentialService 
+            = new CredentialServiceImpl();		
+        String password = credentialService.generatePassword();		
+        System.out.println("Generated Password is -> " + password);
+    }
+}
+
+---------------------
 
