@@ -1,0 +1,602 @@
+
+--------------
+
+package com.greatlearning.javafsd.emailapp.model;
+
+public class Employee {
+
+    private String firstName;
+    private String lastName;
+    
+    private String department;	
+    private String emailAddress;
+    private String password;
+    
+        
+    public Employee(String firstName, String lastName) {
+        
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+
+    public String getLastName() {
+        return lastName;
+    }
+
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+
+    public String getDepartment() {
+        return department;
+    }
+
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+
+
+---------------------------------
+
+package com.greatlearning.javafsd.emailapp.service;
+
+import java.util.Random;
+
+public class PasswordGenerator {
+
+    public String generate() {
+            
+        String capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String smallLetters = "abcdefghijklmnopqrstuvwxyz";
+        String numbers = "0123456789";
+        String specialCharacters = "~!@#$%^&*()-;+[]|";
+        
+        String combinedString = 
+            capitalLetters + smallLetters + numbers
+                + specialCharacters;
+            
+        Random randomObj = new Random();
+        
+        StringBuilder passwordBuilder = new StringBuilder();
+        
+        int length = combinedString.length();
+                
+        //8 character password
+        
+        for (int index = 1; index <= 8; index ++) {
+            
+            int randomIndex = randomObj.nextInt(length);
+            
+            char charValue = 
+                    combinedString.charAt(randomIndex);			
+            
+            passwordBuilder.append(charValue);						
+        }
+        
+        String password = passwordBuilder.toString();
+        
+        return password;
+    }
+}
+
+
+------------------------------------------
+
+package com.greatlearning.javafsd.emailapp.service;
+
+public class PasswordGeneratorTest {
+
+    public static void main(String[] args) {
+        
+        
+		testRun01();
+        
+        testRun02();
+        
+    }
+    
+    static void testRun01() {
+        
+        PasswordGenerator generator = new PasswordGenerator();
+        
+        String password = generator.generate();
+    
+        System.out.println("Generated password -> " + password);
+        
+    }
+    
+    static void testRun02() {
+        
+        
+        for (int index = 1; index <=10; index ++ ) {
+
+            PasswordGenerator generator = new PasswordGenerator();
+
+            String password = generator.generate();
+            
+            System.out.println("Generated password -> " + password);			
+        }
+        
+        
+    }
+}    
+
+----------------------------
+
+package com.greatlearning.javafsd.emailapp.service;
+
+public class EmailAddressGenerator {
+    
+    public String generate(String firstName, String lastName, int departmentCode) {
+                
+        String departmentName = getDepartmentName(departmentCode);
+        
+        // Concatenate strings
+        StringBuilder emailAddressBuilder = new StringBuilder();
+        
+        emailAddressBuilder.append(firstName.toLowerCase());
+        emailAddressBuilder.append(".");
+        emailAddressBuilder.append(lastName.toLowerCase());
+        emailAddressBuilder.append("@");
+        emailAddressBuilder.append(departmentName);
+        emailAddressBuilder.append(".gl.com");
+        
+        String emailAddress = emailAddressBuilder.toString();
+                        
+        return emailAddress;		
+    }
+    
+    public String getDepartmentName(int departmentCode) {
+            
+        String departmentName = "";
+        
+        switch (departmentCode) {
+            
+            case 1: {
+                departmentName = "technical";
+                break;
+            }
+            case 2: {
+                departmentName = "admin";
+                break;				
+            }
+            case 3: {
+                departmentName = "hr";
+                break;				
+            }
+            case 4: {
+                departmentName = "legal";
+                break;				
+            }
+            
+            default : {
+                
+                System.out.println("Invalid department option chosen. Please choose a value "
+                        + "between 1 and 4");
+                System.exit(-1);
+            }
+        }		
+        
+        return departmentName;
+    }
+}
+
+-------------------------------------------------
+
+package com.greatlearning.javafsd.emailapp.service;
+
+public class EmailAddressGeneratorTest {
+
+    public static void main(String[] args) {
+        
+		testEmailAddress01();
+        
+        testEmailAddress02();
+        
+    }
+    
+    static void testEmailAddress01() {
+        
+        EmailAddressGenerator generator = new EmailAddressGenerator();
+        
+        String emailAddress = generator.generate("Rajesh", "Kumar", 2);
+        
+        System.out.println("Email Address is " + emailAddress);		
+    }
+
+    static void testEmailAddress02() {
+        
+        EmailAddressGenerator generator = new EmailAddressGenerator();
+        
+        String emailAddress = generator.generate("Kavya", "Hari", 4);
+        
+        System.out.println("Email Address is " + emailAddress);		
+    }
+
+}
+
+-----------------------------------
+
+package com.greatlearning.javafsd.emailapp.service;
+
+import com.greatlearning.javafsd.emailapp.model.Employee;
+
+public interface ICredentialService {
+
+    String generatePassword();
+
+    String generateEmailAddress(String firstName, String lastName, int departmentCode);
+
+    void displayCredentials(Employee employee);
+
+}
+
+------------------------------------
+
+package com.greatlearning.javafsd.emailapp.service;
+
+import com.greatlearning.javafsd.emailapp.model.Employee;
+
+public class CredentialServiceImpl implements ICredentialService{
+
+    public String generatePassword() {
+
+        return null;
+    }
+
+    public String generateEmailAddress(String firstName, String lastName, int departmentCode) {
+        
+        return null;
+    }
+
+    public void displayCredentials(Employee employee) {
+                
+    }
+
+}
+
+------------------------
+
+
+public void displayCredentials(Employee employee) {
+
+	StringBuilder messageBuilder = new StringBuilder();
+	messageBuilder.append("Dear ");
+	messageBuilder.append(employee.getFirstName());
+	messageBuilder.append(", your generated credentials are as follows");
+	
+	// \r\n \n
+	String newline = System.getProperty("line.separator");
+	messageBuilder.append(newline);
+	messageBuilder.append("Email : ");
+	messageBuilder.append(employee.getEmailAddress());
+	
+	messageBuilder.append(newline);
+	messageBuilder.append("Password :");
+	messageBuilder.append(employee.getPassword());
+	
+	String finalMessage = messageBuilder.toString();
+	
+	System.out.println(finalMessage);		
+}
+
+-------------------------
+
+
+
+
+
+public String generatePassword() {
+
+	PasswordGenerator passwordGenerator = new PasswordGenerator();		
+	String password = passwordGenerator.generate();		
+	return password;
+}
+
+---------------------------
+
+package com.greatlearning.javafsd.emailapp.service;
+
+public class CredentialServiceImplTest {
+
+    
+    public static void main(String[] args) {
+        
+        testPasswordGeneration();
+    }
+    
+    static void testPasswordGeneration() {
+    
+        
+        testPasswordGeneration01();
+    }
+    
+    static void testPasswordGeneration01() {
+        
+        
+        ICredentialService credentialService 
+            = new CredentialServiceImpl();		
+        String password = credentialService.generatePassword();		
+        System.out.println("Generated Password is -> " + password);
+    }
+}
+
+---------------------
+
+public String generateEmailAddress(String firstName, String lastName, int departmentCode) {
+	
+	EmailAddressGenerator emailAddressGenerator = new EmailAddressGenerator();
+	
+	String emailAddress 
+		= emailAddressGenerator.generate(firstName, lastName, departmentCode);
+	return emailAddress;
+}
+
+-----------------------
+
+
+static void testEmailAddressGeneration() {
+	
+	testEmailAddressGeneration01();
+}
+
+static void testEmailAddressGeneration01() {
+	
+	ICredentialService credentialService 
+		= new CredentialServiceImpl();		
+	String emailAddress = credentialService.generateEmailAddress(
+		"Raghu", "Kishore", 3);		
+	System.out.println("Generated Email Address is -> " + emailAddress);
+	
+}
+
+---------------------------------
+
+public static void main(String[] args) {
+	
+	// testPasswordGeneration();
+	
+	testEmailAddressGeneration();
+}
+
+----------------
+
+
+public void displayCredentials(Employee employee) {
+
+	StringBuilder messageBuilder = new StringBuilder();
+	messageBuilder.append("Dear ");
+	messageBuilder.append(employee.getFirstName());
+	messageBuilder.append(", your generated credentials are as follows");
+	
+	// \r\n \n
+	String newline = System.getProperty("line.separator");
+	messageBuilder.append(newline);
+	messageBuilder.append("Email : ");
+	messageBuilder.append(employee.getEmailAddress());
+	
+	messageBuilder.append(newline);
+	messageBuilder.append("Password :");
+	messageBuilder.append(employee.getPassword());
+	
+	String finalMessage = messageBuilder.toString();
+	
+	System.out.println(finalMessage);		
+}
+
+------------------------------
+
+...
+
+import com.greatlearning.javafsd.emailapp.model.Employee;
+
+...
+
+static void testDisplayCredentials() {
+	
+	testDisplayCredentials01();
+	
+}
+
+static void testDisplayCredentials01() {
+	
+	ICredentialService credentialService 
+		= new CredentialServiceImpl();		
+
+	String firstName = "Raghu";
+	String lastName =  "Kishore";
+	int departmentCode = 3;
+	
+	Employee raghu = new Employee(firstName, lastName);
+
+	
+	String emailAddress = credentialService.generateEmailAddress(
+		firstName, lastName, departmentCode);		
+	
+	// For Email Address
+	raghu.setEmailAddress(emailAddress);
+
+
+	// For Password
+	
+	String password = credentialService.generatePassword();				
+	raghu.setPassword(password);
+	
+	credentialService.displayCredentials(raghu);		
+}
+
+
+---------------------
+
+...
+
+public static void main(String[] args) {
+	
+	// testPasswordGeneration();
+	
+	// testEmailAddressGeneration();
+	
+	testDisplayCredentials();
+}
+...
+
+
+--------------------
+
+package com.greatlearning.javafsd.emailapp.utils;
+
+public class EmailApplicationUtils {
+    
+    public static String getDepartmentName(int departmentCode) {
+        
+        String departmentName = "";
+        
+        switch (departmentCode) {
+            
+            case 1: {
+                departmentName = "technical";
+                break;
+            }
+            case 2: {
+                departmentName = "admin";
+                break;				
+            }
+            case 3: {
+                departmentName = "hr";
+                break;				
+            }
+            case 4: {
+                departmentName = "legal";
+                break;				
+            }
+            
+            default : {
+                
+                System.out.println("Invalid department option chosen. Please choose a value "
+                        + "between 1 and 4");
+                System.exit(-1);
+            }
+        }		
+        
+        return departmentName;
+    }
+
+}
+
+
+------------
+
+import com.greatlearning.javafsd.emailapp.utils.EmailApplicationUtils;
+
+public String generate(String firstName, String lastName, int departmentCode) {
+            
+    String departmentName = EmailApplicationUtils.getDepartmentName(departmentCode);
+    
+    // Concatenate strings
+    StringBuilder emailAddressBuilder = new StringBuilder();
+    
+    emailAddressBuilder.append(firstName.toLowerCase());
+    emailAddressBuilder.append(".");
+    emailAddressBuilder.append(lastName.toLowerCase());
+    emailAddressBuilder.append("@");
+    emailAddressBuilder.append(departmentName);
+    emailAddressBuilder.append(".gl.com");
+    
+    String emailAddress = emailAddressBuilder.toString();
+                    
+    return emailAddress;		
+}
+
+--------------------
+
+package com.greatlearning.javafsd.emailapp;
+
+import java.util.Scanner;
+
+import com.greatlearning.javafsd.emailapp.model.Employee;
+import com.greatlearning.javafsd.emailapp.service.CredentialServiceImpl;
+import com.greatlearning.javafsd.emailapp.service.EmailAddressGenerator;
+import com.greatlearning.javafsd.emailapp.service.ICredentialService;
+
+public class EmailApplication {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Welcome to Email Application");
+
+        System.out.println("Enter your first name");
+        String firstName = input.nextLine();
+
+        System.out.println("Enter your last name");
+        String lastName = input.nextLine();
+
+        System.out.println("Enter your department");
+        System.out.println("To specify your department, enter the corresponding department number");
+
+        System.out.println("1. Technical");
+        System.out.println("2. Admin");
+        System.out.println("3. Human Resource");
+        System.out.println("4. Legal");
+
+        int departmentCode = input.nextInt();
+        
+        ICredentialService credentialService 
+            = new CredentialServiceImpl();		
+        
+        Employee employeeObject = new Employee(firstName, lastName);
+
+        String emailAddress = credentialService.generateEmailAddress(
+                firstName, lastName, departmentCode);				
+
+        // For Email Address
+        employeeObject.setEmailAddress(emailAddress);
+
+        // For Password
+        
+        String password = credentialService.generatePassword();				
+        employeeObject.setPassword(password);
+        
+        credentialService.displayCredentials(employeeObject);	
+    }
+
+}
+
+-------------------
+
