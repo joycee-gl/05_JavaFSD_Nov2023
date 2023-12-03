@@ -330,3 +330,31 @@ public class CredentialServiceImplTest {
 
 ---------------------
 
+public String generateEmailAddress(String firstName, String lastName, int departmentCode) {
+	
+	EmailAddressGenerator emailAddressGenerator = new EmailAddressGenerator();
+	
+	String emailAddress 
+		= emailAddressGenerator.generate(firstName, lastName, departmentCode);
+	return emailAddress;
+}
+
+-----------------------
+
+
+static void testEmailAddressGeneration() {
+	
+	testEmailAddressGeneration01();
+}
+
+static void testEmailAddressGeneration01() {
+	
+	ICredentialService credentialService 
+		= new CredentialServiceImpl();		
+	String emailAddress = credentialService.generateEmailAddress(
+		"Raghu", "Kishore", 3);		
+	System.out.println("Generated Email Address is -> " + emailAddress);
+	
+}
+
+---------------------------------
