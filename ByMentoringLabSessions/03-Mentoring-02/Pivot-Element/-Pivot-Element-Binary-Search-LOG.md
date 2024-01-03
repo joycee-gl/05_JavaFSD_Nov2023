@@ -31,7 +31,6 @@ Iterations
 			Start-Index Element is 12 
 			Middle-Index Element is 33 
 			Start-Index Element (12) value is less than or equals to the Middle-Index Element (33) 
-				This means there is an ascending order curve / raising curve going on until this point 
 				This means that the Pivot can be potentially present on the Right Side 
 				Reset the Start-Index to (MiddleIndex + 1) 
 					Start-Index is updated to 4 
@@ -98,7 +97,6 @@ Iterations
 			Start-Index Element is 33 
 			Middle-Index Element is 42 
 			Start-Index Element (33) value is less than or equals to the Middle-Index Element (42) 
-				This means there is an ascending order curve / raising curve going on until this point 
 				This means that the Pivot can be potentially present on the Right Side 
 				Reset the Start-Index to (MiddleIndex + 1) 
 					Start-Index is updated to 2 
@@ -193,7 +191,6 @@ Iterations
 			Start-Index Element is 33 
 			Middle-Index Element is 66 
 			Start-Index Element (33) value is less than or equals to the Middle-Index Element (66) 
-				This means there is an ascending order curve / raising curve going on until this point 
 				This means that the Pivot can be potentially present on the Right Side 
 				Reset the Start-Index to (MiddleIndex + 1) 
 					Start-Index is updated to 4 
