@@ -20,10 +20,8 @@ public class ArraySlicerAndMerger {
 		copyElements(mergedArray, originalArray);
 	}
 	
-	//Input Array (Source) - {0, 10, 20, 30, 40, 50, 70, 80}
 	// Left Index (source) - 2
 	// Middle index (source) - 4
-	
 	private Integer[] constructLeftArray (int sourceLeftIndex, int sourceMiddleIndex) {
 		
 		int targetLeftArrayLength = (sourceMiddleIndex - sourceLeftIndex) + 1;
@@ -45,11 +43,8 @@ public class ArraySlicerAndMerger {
 		
 	}
 	
-	//Input Array (Source) - {0, 10, 20, 30, 40, 50, 70, 80}
 	// Middle Index (source) - 4
 	// Right Index (source) - 6
-	
-	//Right array (target) - {50, 70, 80}
 	
 	private Integer[] constructRightArray(int sourceMiddleIndex, int sourceRightIndex) {
 		
@@ -57,7 +52,6 @@ public class ArraySlicerAndMerger {
 		Integer[] targetRightArray = new Integer[targetRightArrayLength];
 		
 		//Copy elements to right array
-		
 		for (int targetRightArrayIndex = 0; 
 				 targetRightArrayIndex < targetRightArrayLength;
 				targetRightArrayIndex ++) {
