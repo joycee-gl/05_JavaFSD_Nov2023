@@ -6,14 +6,14 @@ public class DenominationsCalculatorTest {
 	
 	public static void main(String[] args) {
 		
-//		test1();
-		test2();
+		test1();
+//		test2();
 	}
 	
 	static void test1() {
 		
-//		Integer[] denominations = {5, 1, 10};
-		Integer[] denominations = {10, 5, 1};
+		Integer[] denominations = {5, 1, 10};
+//		Integer[] denominations = {10, 5, 1};
 		int paymentAmount = 12;
 		
 		System.out.printf("For denominations %s and for payment amount %d", 
@@ -29,8 +29,8 @@ public class DenominationsCalculatorTest {
 	
 	static void test2() {
 		
-//		Integer[] denominations = {12, 5, 123, 18};
-		Integer[] denominations = {123, 18, 12, 5};
+		Integer[] denominations = {12, 5, 123, 18};
+//		Integer[] denominations = {123, 18, 12, 5};
 		int paymentAmount = 160;
 		
 		System.out.printf("For denominations %s and for payment amount %d", 

@@ -1,5 +1,9 @@
 package denominations.calculator;
 
+import java.util.Arrays;
+
+import merge.sort.MergeSort;
+
 public class DenominationsCalculator {
 	
 	private Integer[] denominations;
@@ -15,8 +19,10 @@ public class DenominationsCalculator {
 	
 	
 	private void performSort() {
-		//merge sort
 		
+		MergeSort sorter = new MergeSort(denominations);
+		sorter.mergeSort();
+		System.out.println("Sorted array " + Arrays.toString(denominations));
 	}
 	
 	//core method
