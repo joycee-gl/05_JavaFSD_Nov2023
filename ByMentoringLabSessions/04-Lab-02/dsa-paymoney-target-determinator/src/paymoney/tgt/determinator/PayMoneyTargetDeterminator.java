@@ -53,7 +53,6 @@ public class PayMoneyTargetDeterminator {
 	
 	private void collectDailyTarget() {
 		
-		System.out.println("");
 		System.out.println("Enter the value for daily target : ");
 		dailyTarget = input.nextInt();
 	}

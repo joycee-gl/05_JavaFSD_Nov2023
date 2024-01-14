@@ -15,6 +15,7 @@ public class DenominationsCalculator {
 		
 		this.denominations = denominations;
 		this.paymentAmount = paymentAmount;
+		
 	}
 	
 	
@@ -24,6 +25,7 @@ public class DenominationsCalculator {
 		sorter.mergeSort();
 		System.out.println("Sorted array " + Arrays.toString(denominations));
 	}
+	
 	
 	//core method
 	
@@ -36,7 +38,7 @@ public class DenominationsCalculator {
 		int workingPaymentAmount = paymentAmount;
 		
 		//total
-		int total = 0;
+//		int total = 0;
 		
 		while (denominationIndex < denominations.length) {
 			
@@ -51,15 +53,15 @@ public class DenominationsCalculator {
 				
 				
 				//print the denomination value and its count
-				System.out.printf("Denomination value %d , NoOfTimes %d \r\n", 
+				System.out.printf("Denomination value : %d , Count : %d \r\n", 
 						denomination, noOfDenominations);
 				
-				System.out.println("Previous total " +total);
+//				System.out.println("Previous total " +total);
 				//update total with value from this iteration
 				
-				total = total + (denomination * noOfDenominations);
+//				total = total + (denomination * noOfDenominations);
 				
-				System.out.println("Current total " + total);
+//				System.out.println("Current total " + total);
 				
 			}
 			
@@ -77,7 +79,8 @@ public class DenominationsCalculator {
 		if(workingPaymentAmount != 0) {
 			
 			System.out.println("Unable to provide the exact denominations");
-		}
+			System.out.println("Remaining amount : " + workingPaymentAmount);
+		} 
 		
 	}
  

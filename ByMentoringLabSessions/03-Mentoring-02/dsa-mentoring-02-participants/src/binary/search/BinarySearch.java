@@ -39,10 +39,30 @@ public class BinarySearch {
 			int middleElementIndex = (startIndex + endIndex) / 2;
 			int middleElementValue = inputArray[middleElementIndex];
 			
-			
+			if (middleElementValue == searchElement) {
+    			
+    		    System.out.printf("Element %d present at index %d \r\n", 
+    		    		searchElement, middleElementIndex);	
+    		    return middleElementIndex;
+    				
+    		} else {
+    		    
+    	        if (searchElement > middleElementValue) {
+    	            
+    	            startIndex = middleElementIndex + 1;
+    	                                
+    	        } else if (searchElement < middleElementValue) {
+    	           
+    	        	endIndex = middleElementIndex - 1;
+    	        }
+
+    		}
 			
 		}
 		
+	    System.out.printf("Unable to locate the search element %d, returning the index as %d \r\n", 
+                searchElement, searchElementIndex);
+	    
 	    return searchElementIndex;
 		
 	}

@@ -21,9 +21,9 @@ public class MergeSort {
 		
 		if(startIndex < endIndex) {
 			
-			System.out.printf("Start Index : %d , End Index : %d" , 
-					startIndex, endIndex);
-			System.out.println();
+//			System.out.printf("Start Index : %d , End Index : %d" , 
+//					startIndex, endIndex);
+//			System.out.println();
 			
 			int midPointIndex = (startIndex + endIndex) / 2;
 			
