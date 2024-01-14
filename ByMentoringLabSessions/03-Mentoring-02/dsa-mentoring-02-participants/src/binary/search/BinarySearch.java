@@ -21,6 +21,16 @@ public class BinarySearch {
 		
 		int searchElementIndex = -1;
 	    
+		int startIndexElement = inputArray[startIndex];
+    	int endIndexElement = inputArray[endIndex];
+
+    	if(searchElement < startIndexElement || searchElement > endIndexElement) {
+    		System.out.printf("Search element %d not within range of values in the sorted array, "
+    				+ "so returning the default index %d \r\n", 
+    				searchElement, searchElementIndex);
+    		return searchElementIndex;
+    	}
+    	
 	    while (startIndex <= endIndex) {
 			
 			System.out.printf("Start index : %d, End index : %d", startIndex, endIndex);
