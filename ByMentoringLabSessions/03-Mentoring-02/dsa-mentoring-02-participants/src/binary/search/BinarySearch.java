@@ -19,7 +19,9 @@ public class BinarySearch {
 	
 	private int startSearchInternal(int startIndex, int endIndex) {
 		
-		while (startIndex <= endIndex) {
+		int searchElementIndex = -1;
+	    
+	    while (startIndex <= endIndex) {
 			
 			System.out.printf("Start index : %d, End index : %d", startIndex, endIndex);
 			System.out.println();
@@ -31,7 +33,8 @@ public class BinarySearch {
 			
 		}
 		
-		return -1;
+	    return searchElementIndex;
+		
 	}
 
 }
