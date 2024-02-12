@@ -1,0 +1,29 @@
+select
+    C.Id as CustID,
+    C.Name as CustName,
+    orderID,
+    InvoiceID,
+    Delivery_Date
+from
+    cust_details as C
+    inner join (
+        select
+            O.id as OrderID,
+            O.cust_id,
+            BD.Inv_Id as InvoiceID,
+            BD.Delivery_Date
+        from
+            orders as O
+            inner join (
+                select
+                    Inv_Id,
+                    Order_Id,
+                    date as Delivery_Date
+                from
+                    billing_details
+                where
+                    Delivery_Status = 'Delivered'
+            ) as BD on O.id = BD.Order_id
+    ) as Q on Q.cust_id = C.Id
+order by
+    Cust_Id;     

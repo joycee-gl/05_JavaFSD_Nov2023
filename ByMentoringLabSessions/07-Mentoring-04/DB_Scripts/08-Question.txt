@@ -1,0 +1,45 @@
+-- Procedures
+
+-- Procedure-01
+
+CREATE PROCEDURE `PriceOfCurrentMonth`()
+BEGIN
+
+select
+    *
+from
+    Pricing
+where
+    (Month, Year) In (
+        select
+            monthname (curdate()) as Month,
+            year (curdate()) as Year
+    );
+    
+END
+
+
+-- Additional Data in Pricing table
+insert into pricing values(14.2, 'February', 2024, 2100); 
+insert into pricing values(19.0, 'February', 2024, 2230); 
+insert into pricing values(5.0, 'February', 2024, 1700); 
+
+-- Invoke Procedure
+
+call PriceOfCurrentMonth();
+
+
+-- Procedure-02
+
+CREATE PROCEDURE `PriceOfCurrentMonth2` (MONTH VARCHAR(100), YEAR INT)
+BEGIN
+
+select * from Pricing P WHERE P.MONTH = MONTH AND P.YEAR = YEAR;
+
+END
+
+-- Invoke Procedure
+
+call PriceOfCurrentMonth2('January', '2022');
+
+

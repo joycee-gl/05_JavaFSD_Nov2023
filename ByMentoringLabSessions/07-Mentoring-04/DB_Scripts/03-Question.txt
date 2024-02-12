@@ -1,0 +1,18 @@
+select
+    Id,
+    Name,
+    Connection_Type,
+    O.No_of_cylinders
+from
+    Cust_Details As CD
+    INNER JOIN (
+        select
+            Cust_Id,
+            sum(Quantity) as no_of_cylinders
+        from
+            orders
+        where
+            status = 'ordered'
+        group by
+            cust_Id
+    ) As O ON CD.Id = O.Cust_Id;

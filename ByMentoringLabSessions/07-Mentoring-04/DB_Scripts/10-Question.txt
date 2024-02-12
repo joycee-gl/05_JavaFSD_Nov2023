@@ -1,0 +1,29 @@
+select
+    CD.Id as Cust_Id,
+    CD.Name,
+    O_BD_CB.Cancelled_Bill_Date,
+    O_BD_CB.Reason
+from
+    cust_details as CD
+    inner join (
+        select
+            cust_id,
+            Cancelled_Bill_Date,
+            Reason
+        from
+            orders as O
+            inner join (
+                select
+                    BD.order_id,
+                    CB.Date as Cancelled_Bill_Date,
+                    CB.Reason
+                from
+                    billing_details as BD
+                    inner join (
+                        select
+                            *
+                        from
+                            cancelled_bills
+                    ) as CB on CB.Inv_Id = BD.Inv_Id
+            ) as BD_CB on BD_CB.order_id = O.Id
+    ) as O_BD_CB on O_BD_CB.cust_id = CD.Id;        
