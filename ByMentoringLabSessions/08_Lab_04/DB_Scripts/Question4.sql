@@ -10,4 +10,4 @@ from
         and sp.pro_id = p.pro_id
     )
 where
-	o.cus_id = 2
+	o.cus_id = 2;

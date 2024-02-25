@@ -14,5 +14,5 @@ from
 			supp_id
 		having 
 			NoOfProducts > 1
-	) as sp on s.supp_id = sp.supp_id
+	) as sp on s.supp_id = sp.supp_id;
 	

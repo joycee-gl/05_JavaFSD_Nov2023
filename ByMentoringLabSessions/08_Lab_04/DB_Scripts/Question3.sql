@@ -19,5 +19,5 @@ from (
 			c.cus_id
 ) AS CO
 group by
-	CO.cus_gender
+	CO.cus_gender;
 	

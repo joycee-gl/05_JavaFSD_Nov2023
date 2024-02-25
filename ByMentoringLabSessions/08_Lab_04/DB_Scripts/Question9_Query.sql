@@ -1,4 +1,6 @@
--- sql case stmt 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ListSupplierRatingDetails`()
+BEGIN
+
 select 
 	supp_id as SUPPLIER_ID,
     supp_name as SUPPLIER_NAME,
@@ -33,3 +35,6 @@ from
 			supp_id
 		
 ) as R_O_SP_S ;
+
+
+END
