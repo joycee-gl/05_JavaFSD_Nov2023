@@ -7,4 +7,6 @@ import com.greatlearning.ems.entity.Employee;
 public interface EmployeeService {
 	
 	public List<Employee> findAll();
+	
+	public void save(Employee employee);
 }
