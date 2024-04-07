@@ -9,4 +9,8 @@ public interface EmployeeService {
 	public List<Employee> findAll();
 	
 	public void save(Employee employee);
+	
+	public Employee findById(Integer employeeID);
+	
+	public void deleteById(Integer employeeId);
 }

@@ -62,7 +62,35 @@
 
 
                     <td>
-
+						<div class="row">
+						    <div class="col-small">
+						        <!-- Add "update" button/link -->
+						        <form action="#" th:action="@{/employees/showEmployeeForm_Update}" method="POST">
+						
+						
+						            <input type="hidden" name="employeeId" th:value="${employee.id}" />
+						            <button type="submit" class="btn btn-info btn-sm ml-3 mr-1">Update</button>
+						
+						
+						        </form>
+						    </div>
+						</div>               
+								
+						<div class="col-small">
+						    <!-- Add "delete" button/link -->
+						    <form action="#" th:action="@{/employees/delete}" method="POST">
+						
+						
+						        <input type="hidden" name="employeeId" th:value="${employee.id}" />
+						        <button type="submit" class="btn btn-danger btn-sm"
+						            onclick="if (!(confirm('Are you sure you want to remove this employee?'))) return false">
+						            Delete
+						        </button>
+						
+						
+						    </form>
+						</div>                    
+																
 
                     </td>
                 </tr>

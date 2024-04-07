@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.greatlearning.ems.entity.Employee;
 import com.greatlearning.ems.service.EmployeeService;
@@ -54,6 +55,26 @@ public class EmployeeController {
 		employeeService.save(employee);
 		
 		//redirect to listing page
+		return "redirect:/employees/list";
+	}
+	
+	@RequestMapping("/showEmployeeForm_Update")
+	public String updateEmployee_Step1(
+			@RequestParam("employeeId") Integer employeeId,
+			Model theModel) {
+		
+		Employee employee  = employeeService.findById(employeeId);
+		theModel.addAttribute("employee", employee);
+		
+		return "employees/employee-form";
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(
+			@RequestParam("employeeId") Integer employeeId) {
+		
+		employeeService.deleteById(employeeId);
+		
 		return "redirect:/employees/list";
 	}
 }
