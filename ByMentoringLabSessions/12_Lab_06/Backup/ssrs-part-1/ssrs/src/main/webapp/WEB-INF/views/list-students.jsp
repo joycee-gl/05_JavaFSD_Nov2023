@@ -34,11 +34,6 @@
 			<a href="${addUrl}" class="btn btn-primary btn-sm mb-3"> Add
 				Student </a>
 
-			<!-- Add Logout button -->
-			<c:url var="logoutUrl" value="/logout" />
-			<a href="${logoutUrl}" class="btn btn-primary btn-sm mb-3 mx-auto">
-				Logout </a>
-
 		</form>
 
 		<table class="table table-bordered table-striped">
@@ -63,13 +58,15 @@
 						<td>
 							<!-- Add "update" button/link --> <c:url var="updateUrl"
 								value="/students/displayStudentForm_Update?studentId=${studentObj.id}" />
-							<a href="${updateUrl}" class="btn btn-info btn-sm"> Update </a> <!-- Add "delete" button/link -->
-							<c:url var="deleteUrl"
-								value="/students/delete?studentId=${studentObj.id}" /> <a
-							href="${deleteUrl}" class="btn btn-danger btn-sm"
-							onclick="if (!(confirm('Are you sure you want to delete this student?'))) return false">
-								Delete </a>
-
+							<a href="${updateUrl}" class="btn btn-info btn-sm"> Update </a>
+							
+							<!-- Add "delete" button/link -->							
+							<c:url var="deleteUrl" value="/students/delete?studentId=${studentObj.id}" />				
+							<a href="${deleteUrl}" class="btn btn-danger btn-sm"
+							  onclick="if (!(confirm('Are you sure you want to delete this student?'))) return false">
+							  Delete 
+							</a>  
+							
 						</td>
 					</tr>
 				</c:forEach>
