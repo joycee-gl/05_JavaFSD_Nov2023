@@ -3,6 +3,27 @@
 
 - N/A
 
+# Lombok Configuration
+
+
+- Java Path
+  - Example-1
+    ```
+    set PATH=C:\Softwares\Java\jdk-17\bin;%PATH%;
+    ```
+
+- Lombok Path
+  - Example-1
+    ```
+    SET LOMBOK_LIBRARY_JAR_PATH=C:\Users\queen\.m2\repository\org\projectlombok\lombok\1.18.32\lombok-1.18.32.jar
+    ```
+
+- Lombok Installation
+  ```
+  java -jar %LOMBOK_LIBRARY_JAR_PATH%
+  ```
+
+
 # Welcome Page
 
 - application.properties
