@@ -14,4 +14,6 @@ public interface StudentService {
   
   public void saveOrUpdate(int id, String firstName, String lastName, String course, String country);
   
+  public void deleteById(int id);
+  
 }  

@@ -57,4 +57,10 @@ public class StudentServiceImpl implements StudentService {
     this.save(studentObj);
   }          
   
+  
+  @Override
+  public void deleteById(int id) {
+      studentRepository.deleteById(id);    
+  }  
+  
 }  
