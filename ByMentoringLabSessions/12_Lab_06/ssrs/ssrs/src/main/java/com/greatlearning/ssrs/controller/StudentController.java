@@ -11,57 +11,56 @@ import com.greatlearning.ssrs.entity.Student;
 import com.greatlearning.ssrs.service.StudentService;
 
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;    
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping("/students")
 public class StudentController {
 
-  @Autowired
-  private StudentService studentService;
+	@Autowired
+	private StudentService studentService;
 
-  @RequestMapping("/list")
-  public String listStudents(Model theModel) {
+	@RequestMapping("/list")
+	public String listStudents(Model theModel) {
 
-    List<Student> students = studentService.findAll();
+		List<Student> students = studentService.findAll();
 
-    theModel.addAttribute("students", students);
+		theModel.addAttribute("students", students);
 
-    return "list-students";
-  }
-  
-  @RequestMapping("/displayStudentForm")
-  public String addStudent_Step1(Model theModel) {
+		return "list-students";
+	}
 
-      Student student = new Student();
+	@RequestMapping("/displayStudentForm")
+	public String addStudent_Step1(Model theModel) {
 
-      theModel.addAttribute("student", student);
+		Student student = new Student();
 
-      return "student-form";
-  }    
-  
-  @PostMapping("/save")
-  public String saveStudent(@RequestParam("id") int id, @RequestParam("firstName") String firstName,
-      @RequestParam("lastName") String lastName, @RequestParam("course") String course,
-      @RequestParam("country") String country) {
+		theModel.addAttribute("student", student);
 
-    System.out.println("Student ID ->" + id);
+		return "student-form";
+	}
 
-    Student studentObj = null;
-    if (id == 0) {
+	@PostMapping("/save")
+	public String saveStudent(@RequestParam("id") int id, @RequestParam("firstName") String firstName,
+	    @RequestParam("lastName") String lastName, @RequestParam("course") String course,
+	    @RequestParam("country") String country) {
 
-      studentObj = new Student(firstName, lastName, course, country);
-      System.out.println("Add Student Scenario");
-    } else {
+	  studentService.saveOrUpdate(id, firstName, lastName, course, country);
 
-      System.out.println("Update Student Scenario");
-    }
+	  // use a redirect to 'students-listing'
+	  return "redirect:/students/list";
+	}  
 
-    // Save/Update the student
-    studentService.save(studentObj);
+	@RequestMapping("/displayStudentForm_Update")
+	public String updateStudent_Step1(@RequestParam("studentId") int studentId, Model theModel) {
 
-    // use a redirect to 'students-listing'
-    return "redirect:/students/list";
-  }                  
-  
-}  
+		Student student = studentService.findById(studentId);
+
+		// set 'student' as a model attribute to pre-populate the form
+		theModel.addAttribute("student", student);
+
+		// send over to our form
+		return "student-form";
+	}
+
+}
